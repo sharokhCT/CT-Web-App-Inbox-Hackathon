@@ -1,3 +1,4 @@
+console.log("web_inbox.js loaded");
 clevertap.notificationCallback = function(msg){
     //raise the notification viewed and clicked events in the callback
     clevertap.raiseNotificationViewed();

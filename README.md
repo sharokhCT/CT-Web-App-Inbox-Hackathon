@@ -53,6 +53,9 @@ The msg will be in the format below. msgId contains the campaign id and the date
 Create an Interstitial Web Pop up campaign on the CleverTap Dashboard.
 Please ensure that you are selecting the option Invoke the Javascript function as shared in the example screenshot below.
 
+![altimage](https://github.com/sharokhCT/CT-Web-App-Inbox-Hackathon/blob/master/Screenshot%202020-05-16%20at%204.55.00%20PM.png?raw=true)
+
+
 
 Define the Custom keys and their value
 Schedule the campaign

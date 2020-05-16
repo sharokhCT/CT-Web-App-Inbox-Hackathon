@@ -3,10 +3,10 @@
 This will help you to create App inbox messages on Websites.
 
 Table contents:
-1. Working Demo link
-2. Installation
-3. Dashboard Usage
-4. Custom Keys
+1. [Working Demo link](https://github.com/sharokhCT/CT-Web-App-Inbox-Hackathon#1-working-demo-link-)
+2. [Installation](https://github.com/sharokhCT/CT-Web-App-Inbox-Hackathon#2-integration-)
+3. [Dashboard Usage](https://github.com/sharokhCT/CT-Web-App-Inbox-Hackathon#3-dashboard-usage-)
+4. [Custom Keys](https://github.com/sharokhCT/CT-Web-App-Inbox-Hackathon#4-custom-keys)
 
 # 1. Working Demo link :
 https://sharokhct.github.io/CT-Web-App-Inbox-Hackathon

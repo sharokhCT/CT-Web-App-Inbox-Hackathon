@@ -9,7 +9,7 @@ Table contents:
 4. Custom Keys
 
 # 1. Working Demo link :
-https://sharokhct.github.io/CT-Web-App-Inbox-Hackathon/2
+https://sharokhct.github.io/CT-Web-App-Inbox-Hackathon
 
 # 2. Integration :
 

@@ -1,0 +1,253 @@
+<html>
+	<head>
+		<title>CleverTapper Web Integration</title>
+		<link rel="shortcut icon" href="https://d35fo82fjcw0y8.cloudfront.net/2018/03/01014752/favicon.png?v=0">
+		
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+		<!-- CleverTap -->
+		<script type="text/javascript">
+			 var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
+			// replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
+			clevertap.account.push({"id": "6KK-6R7-K75Z"});
+			clevertap.privacy.push({optOut: false}); //set the flag to true, if the user of the device opts out of sharing their data
+			clevertap.privacy.push({useIP: true}); //set the flag to true, if the user agrees to share their IP data
+			clevertap.enablePersonalization = true; // enables Personalization
+			(function () {
+				 var wzrk = document.createElement('script');
+				 wzrk.type = 'text/javascript';
+				 wzrk.async = true;
+				 wzrk.src = 'https://sharokhct.github.io/CT-Web-Integration/a.js';
+				 var s = document.getElementsByTagName('script')[0];
+				 s.parentNode.insertBefore(wzrk, s);
+			})();
+		</script>
+
+		<script src="https://kit.fontawesome.com/eb0c139602.js" crossorigin="anonymous"></script>
+		<script type="text/javascript">
+			let i = 0;
+		</script>
+	</head>
+
+	<body style="background-color: #f6f7f9;">
+		<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #434761 !important;">
+			<a class="navbar-brand" href="#"><span style="color:white;">Clever</span><span style="color:#ff893c;">Tapper</span></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					<li class="nav-item">
+						<a class="nav-link" href="index.html">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="shop.html">Shop</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="profile.html">Profile <span class="sr-only">(current)</span></a>
+					</li>
+				</ul>
+				<div class="my-2 my-lg-0">
+					<a href="https://clevertap.com" target="_blank" style="text-decoration: none; color: white;"><i class="fas fa-external-link-alt"></i></a>
+				</div>
+			</div>
+		</nav>
+		<div class="container" style="margin-top: 25px">
+			<div id="message"></div>
+			<div class="row" style="padding:14px;">
+						<div class="col-md-3">
+							<!-- Uploaded image area-->
+							<div class="image-area text-center"><img id="profileImage" style="width:100%; height: auto;" src="https://res.cloudinary.com/mhmd/image/upload/v1564991372/image_pxlho1.svg" alt="Profile Image" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+							
+							<input type="text" class="form-control mt-4" id="profileImageURL" placeholder="Profile Image URL" oninput="updateProfileImage()">
+							<script type="text/javascript">
+								function updateProfileImage() {
+									document.getElementById("profileImage").src = document.getElementById("profileImageURL").value;
+								}
+							</script>
+						</div>
+
+						<div class="col-md-9 mt-4">
+							<div class="row">
+								<div class="col-md-12 mt-4">
+									<label for="name">CTID</label>
+									<input type="text" class="form-control" id="CTID" readonly>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12 mt-4">
+									<label for="name">Name</label>
+									<input type="text" class="form-control" id="name">
+								</div>
+							</div>
+							<div class="row mt-3">
+								<div class="col-md-4 mt-4">
+									<label for="identity">Identity</label>
+									<input type="text" class="form-control" id="identity">
+								</div>
+								<div class="col-md-4 mt-4">
+									<label for="email">Email</label>
+									<input type="email" class="form-control" id="email">
+								</div>
+								<div class="col-md-4 mt-4">
+									<label for="phoneNumber">Phone Number</label>
+									<input type="text" class="form-control" id="phoneNumber">
+								</div>
+							</div>
+							<div class="mt-3" id="customUserProperties">
+								<div class="row" id="customUserProp0">
+									<div class="col-md-5 mt-4">
+										<label for="customUserPropertyName">Custom User Property Name</label>
+										<input type="text" class="form-control" id="customUserPropertyName0">
+									</div>
+									<div class="col-md-6 mt-4">
+										<label for="customUserPropertyValue">Custom User Property Value</label>
+										<input type="text" class="form-control" id="customUserPropertyValue0">
+									</div>
+									<div class="col-md-1 mt-4">
+										<button class="btn btn-primary mt-4" onClick="addCustomUserProp()">add</button>
+									</div>
+								</div>
+							</div>
+								<script type="text/javascript">
+									function addCustomUserProp() {
+										if(document.getElementById("customUserPropertyName" + i).value == "" || document.getElementById("customUserPropertyValue" + i).value == "") {
+											document.getElementById("message").innerHTML = `
+											<div class="alert alert-danger" role="alert">
+												Please fill out the previous custom user property first!
+											</div>
+											`;
+											return;
+										}
+										
+										i++;
+										document.getElementById("message").innerHTML = "";
+										document.getElementById("customUserProperties").innerHTML += `
+										<div class="row" id="customUserProp` + i + `">
+											<div class="col-md-5 mt-4">
+												<label for="customUserPropertyName">Custom User Property Name</label>
+												<input type="text" class="form-control" id="customUserPropertyName` + i + `">
+											</div>
+											<div class="col-md-6 mt-4">
+												<label for="customUserPropertyValue">Custom User Property Value</label>
+												<input type="text" class="form-control" id="customUserPropertyValue` + i + `">
+											</div>
+											<div class="col-md-1 mt-4">
+												<button class="btn btn-danger mt-4" onClick="removeCustomUserProp(` + i + `)">Remove</button>
+											</div>
+										</div>`;
+									}
+									
+									function removeCustomUserProp(index) {
+										document.getElementById("customUserProp" + index).remove();
+										i--;
+									}
+								</script>
+						</div>
+					</div>
+
+					<button class="btn btn-primary" onClick="login()">Login</button>
+					<script type="text/javascript">
+						function login() {
+							var name = document.getElementById("name").value;
+							var identity = document.getElementById("identity").value;
+							var email = document.getElementById("email").value;
+							var phoneNumber = document.getElementById("phoneNumber").value;
+							var photo = document.getElementById("profileImageURL").value;
+							
+							var userProps = {
+								"Site": {
+									'Name': name,
+									'Email': email,
+									'identity': identity,
+									'Phone': phoneNumber,
+									"Photo": photo,
+								}
+							};
+
+							for(var j = 0; j <= i; j++) {
+								userProps["Site"][document.getElementById("customUserPropertyName" + j).value] = document.getElementById("customUserPropertyValue" + j).value;
+							}
+				
+							clevertap.onUserLogin.push(userProps);
+						}
+					</script>
+
+					<button class="btn btn-info" onClick="pushProfile()">Push Profile</button>
+					<script type="text/javascript">
+						function pushProfile() {
+							var name = document.getElementById("name").value;
+							var identity = document.getElementById("identity").value;
+							var email = document.getElementById("email").value;
+							var phoneNumber = document.getElementById("phoneNumber").value;
+							var photo = document.getElementById("profileImageURL").value;
+
+							var userProps = {
+								"Site": {
+									'Name': name,
+									'Email': email,
+									'identity': identity,
+									'Phone': phoneNumber,
+									"Photo": photo,
+								}
+							};
+
+							for(var j = 0; j <= i; j++) {
+								userProps["Site"][document.getElementById("customUserPropertyName" + j).value] = document.getElementById("customUserPropertyValue" + j).value;
+							}
+
+							clevertap.profile.push(userProps);
+						}
+					</script>
+
+					<button class="btn btn-secondary" onClick="optIn();return false;">Opt-In</button>
+					<script type="text/javascript">
+						function optIn() {
+							clevertap.notifications.push({
+								"titleText":'Would you like to receive Push Notifications?',
+								"bodyText":'We promise to only send you relevant content and give you updates on your transactions',
+								"okButtonText":'Sign me up!',
+								"rejectButtonText":'No thanks',
+								"okButtonColor":'#f28046',
+								"askAgainTimeInSeconds":5,
+								"serviceWorkerPath": "https://sharokhct.github.io/CT-Web-Integration/clevertap_sw.js" // path to your custom service worker file
+							});
+						}
+					</script>
+				</form>
+			</div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				document.getElementById("CTID").value = clevertap.getCleverTapID();
+
+				if(clevertap.profile.getAttribute("Name") != undefined)
+					document.getElementById("name").value = clevertap.profile.getAttribute("Name");
+
+				if(clevertap.profile.getAttribute("identity") != undefined)
+					document.getElementById("identity").value = clevertap.profile.getAttribute("identity");
+
+				if(clevertap.profile.getAttribute("Phone") != undefined)
+					document.getElementById("phoneNumber").value = "+" + clevertap.profile.getAttribute("Phone");
+
+				if(clevertap.profile.getAttribute("Email") != undefined)
+					document.getElementById("email").value = clevertap.profile.getAttribute("Email");
+				
+				if(clevertap.profile.getAttribute("Photo") != "" && clevertap.profile.getAttribute("Photo") != undefined) {
+					document.getElementById("profileImageURL").value = clevertap.profile.getAttribute("Photo");
+					document.getElementById("profileImage").src = clevertap.profile.getAttribute("Photo");
+				}
+			}
+		</script>
+	</body>
+<html>

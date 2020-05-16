@@ -1,0 +1,377 @@
+<html>
+	<head>
+		<title>Shop | CleverTapper Web Integration</title>
+		<link rel="shortcut icon" href="https://d35fo82fjcw0y8.cloudfront.net/2018/03/01014752/favicon.png?v=0">
+		
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+		<!-- CleverTap -->
+		<script type="text/javascript">
+			 var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
+			// replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
+			clevertap.account.push({"id": "6KK-6R7-K75Z"});
+			clevertap.privacy.push({optOut: false}); //set the flag to true, if the user of the device opts out of sharing their data
+			clevertap.privacy.push({useIP: true}); //set the flag to true, if the user agrees to share their IP data
+			(function () {
+				 var wzrk = document.createElement('script');
+				 wzrk.type = 'text/javascript';
+				 wzrk.async = true;
+				 wzrk.src = 'https://sharokhct.github.io/CT-Web-Integration/a.js';
+				 var s = document.getElementsByTagName('script')[0];
+				 s.parentNode.insertBefore(wzrk, s);
+			})();
+		</script>
+
+		<!-- Store -->
+		<script type="text/javascript">
+			var products = [
+				{
+					index: 0,
+					name: "Bushnell Falcon 10x50 Wide Angle Binoculars (Black)",
+					description: "The Falcon series offers powerful magnification at an economical price. Versatile, and ideal for stadium sports, bird-watching, hunting, and many other outdoor applications, the 10x50 model boasts a durable design and rubberized, abrasion-resistant finish. An InstaFocus lever provides smooth feedback, with just enough tension to fine-tune magnification, while a Porro prism and coated lenses provide sharp viewing. For those who wear eyeglasses, or sunglasses on bright days, clever fold-down eyecups protect your lenses from scratching.",
+					image: "https://images-na.ssl-images-amazon.com/images/I/81tmu9heu-L._AC_SL1500_.jpg",
+					price: 31.96,
+				},{
+					index: 1,
+					name: "Outdoor Security Camera, 1080P WiFi Camera Wireless",
+					description: "AMICCOM Technology Ltd was founded in 1990 and we witnessed the evolvement of time management technologies and have acquired strong expertise and technical competencies in the industry. This enables us to deliver products and services that not only meet but also exceed our clients’ expectations in areas such as quality, performance, reliability & affordability. With image processing technology, provide you crisp and clear videos up to 1920*1080 and make your view clearer. Combined with a 3.6mm fixed lens which will deliver clarity in every direction, so that you won’t miss any important details.",
+					image: "https://images-na.ssl-images-amazon.com/images/I/71Cj-5UMIdL._AC_SL1500_.jpg",
+					price: 38.99,
+				},{
+					index: 2,
+					name: "Anker Wireless Charger, PowerWave Pad 10W Max Qi-Certified",
+					description: "The Wireless Fast Charging Pad Slim and Trim An aesthetically-pleasing slimline design adds an air of high-tech sophistication to your desk, while the TPU charging surface prevents your devices from easily sliding off. Just in Case Don’t worry about taking your case off whenever you have to charge. PowerWave delivers charging power directly through cases up to 5 mm thick—including Otterboxes. This is a must buy for all customers who are on the go!",
+					image: "https://images-na.ssl-images-amazon.com/images/I/51QPhQTFd0L._AC_SL1500_.jpg",
+					price: 8.99,
+				},{
+					index: 3,
+					name: "HEROBIKER Sweat Wicking Skull Cap Beanie Bandana Do-Rags Helmet",
+					description: "Polyester mesh fabric that absorbs most moisture, dries quickly and works well under caps, helmets/work hats. Adjustable ties in the back to fit many. Unisex design for men, women youth. Flap to help protect neck from sun and wind damage and helmet burn. Multifunctional hat, special for hip-hop Rock busker rap and motorcycling and other sports. Specification: Name: Skull Cap Brand: HEEROBIKER Condition: Brand new Gender: Unisex Material: BLCOOL (Polyester mesh) Color: As picture Season: Spring, autumn, winter Size: One size fit all(for head circumference 54-68cm)",
+					image: "https://images-na.ssl-images-amazon.com/images/I/51Yq93wAlJL._AC_UX679_.jpg",
+					price: 14.98,
+				},{
+					index: 4,
+					name: "TOPS/Oxford 1-Subject Notebooks, 8 inch x 10-1/2 inch, College Rule",
+					description: "This six pack lets you instantly and efficiently color code your school notes or work subjects and organize your life. Each of the notepads has three holes punched into it to fit a standard binder that is typically used for school or work. A sturdy snag-resistant coil keeps your pages secure and resists catching on backpacks, papers and clothing. Perforated sheets detach easily to keep your book looking neat and tidy no matter how many times you re-write. 8 inch x 10-1/2 inch. College rule, 70 sheets. 6 Pack. Color assortments may vary.",
+					image: "https://images-na.ssl-images-amazon.com/images/I/71fetydzOVL._AC_SL1500_.jpg",
+					price: 8.99,
+				},{
+					index: 5,
+					name: "SKLZ Pro Mini Basketball Hoop for Indoor Use: Home, Dorm, Office",
+					description: "Game on. Just like the real thing. The Pro Mini Hoop isn’t just similar to real hoops, it’s got the same soul. Listen closely and you can hear the heavy-duty net swish when you hit nothing but the bottom of the net. And its pro-style replica graphics give it the look of a winner.",
+					image: "https://images-na.ssl-images-amazon.com/images/I/51vJe512YKL._AC_SX425_.jpg",
+					price: 29.99,
+				}
+			];
+
+	   </script>
+
+		<script src="https://kit.fontawesome.com/eb0c139602.js" crossorigin="anonymous"></script>
+	</head>
+
+	<body style="background-color: #f6f7f9;">
+		<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #434761 !important;">
+			<a class="navbar-brand" href="#"><span style="color:white;">Clever</span><span style="color:#ff893c;">Tapper</span></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					<li class="nav-item">
+						<a class="nav-link" href="index.html">Home</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="#">Shop <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="profile.html">Profile</a>
+					</li>
+				</ul>
+				<div class="my-2 my-lg-0">
+					<a href="https://clevertap.com" target="_blank" style="text-decoration: none; color: white;"><i class="fas fa-external-link-alt"></i></a>
+				</div>
+			</div>
+		</nav>
+		<div class="container" style="margin-top: 25px">
+			<div class="row" style="padding:14px;">
+				<button type="button" class="btn btn-primary" onClick="viewCart()">
+					Cart <span class="badge badge-light" id="numberOfItemsInCart">0</span>
+				</button>
+				<div class="modal fade bd-example-modal-lg" tabindex="-1" id="cart" role="dialog" aria-labelledby="cart" aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+								<button type="button" class="btn btn-light ml-3" onclick="refreshCart()" aria-label="Refresh">
+									<span aria-hidden="true">⟳</span>
+								</button>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="container-fluid">
+									<div class="col-sm-12">
+										<div id="message"></div>
+										<table class="table table-hover">
+											<thead>
+												<tr>
+													<th>Product</th>
+													<th class="text-center">Quantity</th>
+													<th class="text-center">Price</th>
+													<th class="text-center">Total</th>
+													<th></th>
+												</tr>
+											</thead>
+											<tbody id="cartItems">
+											</tbody>
+											<tfoot>
+												<tr>
+													<td>   </td>
+													<td>   </td>
+													<td>   </td>
+													<td><h5>Subtotal</h5></td>
+													<td class="text-right"><h5><strong id="subtotal">$</strong></h5></td>
+												</tr>
+												<tr>
+													<td>   </td>
+													<td>   </td>
+													<td>   </td>
+													<td><h5>Sales Tax</h5></td>
+													<td class="text-right"><h5><strong id="tax">$</strong></h5></td>
+												</tr>
+												<tr>
+													<td>   </td>
+													<td>   </td>
+													<td>   </td>
+													<td><h3>Total</h3></td>
+													<td class="text-right"><h3><strong id="total">$</strong></h3></td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Continue Shopping</button>
+								<button type="button" class="btn btn-success" onClick="checkout()">Checkout</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="album py-5 bg-light">
+					<div class="container">
+					  <div class="row" id="products">
+
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			let cart = (localStorage.getItem("cart") ? loadCart() : {});
+			let cartItemsTable = document.getElementById('cartItems');
+
+			function loadCart() {
+				return JSON.parse(localStorage.getItem("cart"));
+			}
+
+			document.getElementById('numberOfItemsInCart').innerHTML = Object.keys(cart).length;
+
+			let productsDiv = document.getElementById('products');
+			for(const product of products) {
+				productsDiv.innerHTML += `
+				<div class="col-md-4">
+					<div class="card mb-4 box-shadow">
+						<div style="background-color: #FFFFFF;text-align: center; display: block;">
+							<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: auto !important;" src="` + product.image + `" data-holder-rendered="true">
+						</div>
+						<div class="card-body">
+							<h4>`+ product.name + `</h4>
+							<p class="card-text">` + product.description.substring(0, 200) + `</p>
+							<div class="d-flex justify-content-between align-items-center">
+							<div class="btn-group">
+								<button type="button" class="btn btn-sm btn-outline-secondary" onClick="viewProduct(`+ product.index +`)">View</button>
+								<div class="modal fade bd-example-modal-lg" tabindex="-1" id="product` + product.index + `"role="dialog" aria-labelledby="` + product.index + `" aria-hidden="true">
+									<div class="modal-dialog modal-lg">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel">` + product.name + `</h5>
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												<div class="container-fluid">
+													<div class="row">
+														<div class="col-md-4">
+															<img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: auto; width: 100% !important;" src="` + product.image + `" data-holder-rendered="true">
+														</div>
+														<div class="col-md-8">
+															<h3>` + product.name + `</h3>
+															<p>Price: <span class="lead" style="color:#B12704!important">$` + product.price + `</span></p>
+															` + product.description + `
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+												<button type="button" class="btn btn-primary" onClick="addToCart(` + product.index + `)">Add to Cart</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<button type="button" class="btn btn-sm btn-outline-secondary" onClick="addToCart(` + product.index + `)">Add to Cart</button>
+							</div>
+							<small class="text-muted">$` + product.price + `</small>
+							</div>
+						</div>
+					</div>
+				</div>
+				`;
+			}
+
+			function viewProduct(index) {
+				$('#product' + index).modal('show');
+
+				// CleverTap Viewed Product Event
+				clevertap.event.push("Viewed Product", {
+					"Product Name": products[index].name,
+					"Price": products[index].price
+				});
+			}
+
+			function addToCart(index) {
+				if(cart[index])
+					cart[index]++;
+				else
+					cart[index] = 1;
+				window.localStorage.setItem('cart', JSON.stringify(cart));
+				document.getElementById('numberOfItemsInCart').innerHTML = Object.keys(cart).length;
+				
+				// CleverTap Added to Cart Event
+				clevertap.event.push("Added to Cart", {
+					"Product Name": products[index].name,
+					"Price": products[index].price
+				});
+			}
+
+			function checkout() {
+				if(getCartKeys().length > 0) {
+					let items = [];
+
+					for (const key of getCartKeys()) {
+						items.push({
+							"Product Name": products[key].name,
+							"Quantity": cart[key]
+						})
+					}
+
+					// CleverTap Charged Event
+					clevertap.event.push("Charged", {
+						"Amount": calculateTotal(),
+						"Payment mode": "Credit Card",
+						"Items": items
+					});
+
+					cart = [];
+					localStorage.removeItem("cart");
+					refreshCart();
+					document.getElementById("message").innerHTML = `
+					<div class="alert alert-success" role="alert">
+						You've checkout successfully!
+					</div>`;
+
+					setTimeout(4000);
+					$('#cart').modal('hide');
+					document.getElementById("message").innerHTML = "";
+				} else {
+					document.getElementById("message").innerHTML = `
+					<div class="alert alert-danger" role="alert">
+						No items to checkout!
+					</div>`;
+				}
+			}
+
+			function viewCart() {
+				refreshCart();
+				$('#cart').modal('show');
+			}
+
+			function removeItem(key) {
+				delete cart[key];
+				localStorage.setItem('cart', JSON.stringify(cart));
+
+				// CleverTap Added to Cart Event
+				clevertap.event.push("Removed from Cart", {
+					"Product Name": products[key].name,
+					"Price": products[key].price
+				});
+				refreshCart();
+			}
+
+			function refreshCart() {
+				cartItemsTable.innerHTML = "";
+				document.getElementById("message").innerHTML = "";
+				for (const key of getCartKeys()) {
+					cartItemsTable.innerHTML += `
+					<tr>
+						<td class="col-sm-8 col-md-6">
+							<div class="media">
+								<img class="media-object mr-5" src="` + products[key].image + `" style="width: 72px; height: auto;">
+								<div class="media-body">
+									<h4 class="media-heading">` + products[key].name + `</h4>
+								</div>
+							</div>
+						</td>
+						<td class="col-sm-1 col-md-1" style="text-align: center">
+							<p>` + cart[key] + `</p>
+						</td>
+						<td class="col-sm-1 col-md-1 text-center"><strong>$` + products[key].price + `</strong></td>
+						<td class="col-sm-1 col-md-1 text-center"><strong>$` + (products[key].price * cart[key]).toFixed(2) + `</strong></td>
+						<td class="col-sm-1 col-md-1">
+							<button type="button" class="btn btn-danger" onClick="removeItem(` + key + `)">Remove</button>
+						</td>
+					</tr>`;
+				}
+
+				document.getElementById('subtotal').innerHTML = "$" + calculateSubtotal();
+				document.getElementById('tax').innerHTML = "$" + calculateTax();
+				document.getElementById('total').innerHTML = "$" + calculateTotal();
+				document.getElementById('numberOfItemsInCart').innerHTML = getCartKeys().length;
+			}
+
+			function calculateSubtotal() {
+				let subtotal = 0;
+				for (const key of getCartKeys()) {
+					subtotal += products[key].price * cart[key];
+				}
+				return subtotal.toFixed(2);
+			}
+
+			function calculateTax() {
+				return (calculateSubtotal() * .0725).toFixed(2);
+			}
+
+			function calculateTotal() {
+				return (parseFloat(calculateSubtotal()) + parseFloat(calculateTax())).toFixed(2);
+			}
+
+			function getCartKeys() {
+				return Object.keys(cart)
+			}
+		</script>
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	</body>
+<html>

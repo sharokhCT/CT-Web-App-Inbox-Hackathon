@@ -63,7 +63,7 @@
 })(jQuery); // End of use strict
 
 // CleverTap
- var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
+ /*var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
 // replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
 clevertap.account.push({"id": "TEST-846-KWR-455Z"});
 clevertap.privacy.push({optOut: false}); //set the flag to true, if the user of the device opts out of sharing their data
@@ -76,8 +76,9 @@ clevertap.privacy.push({useIP: true}); //set the flag to true, if the user agree
      var s = document.getElementsByTagName('script')[0];
      s.parentNode.insertBefore(wzrk, s);
 })();
+*/
 
-clevertap.notificationCallback = function(msg) {
+/*clevertap.notificationCallback = function(msg) {
     //raise the notification viewed and clicked events in the callback
     clevertap.raiseNotificationViewed();
     //console.log(JSON.stringify(msg)); //your custom rendering implementation here
@@ -87,6 +88,7 @@ clevertap.notificationCallback = function(msg) {
         clevertap.raiseNotificationClicked();
     });
 };
+*/
 
 // App Inbox
 function openNav() {

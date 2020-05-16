@@ -100,8 +100,8 @@
                         <input type="password" class="form-control" id="password">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" href="javascript:void(0)" onclick="login()">Login</button>
-                        <button type="button" class="btn btn-secondary" href="javascript:void(0)" onclick="register()">Register</button>
+                        <button type="button" class="btn btn-primary" onclick="">Login</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Register</button>
                     </div>
                 </div>
             </div>
@@ -268,7 +268,93 @@
 
         <!-- FAB Icon -->
         <div class="appInboxFAB" onclick="openNav()"> + </div>
+        <script type="text/javascript">
+     var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
+ // replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
+clevertap.account.push({"id": "TEST-846-KWR-455Z"});
+clevertap.privacy.push({optOut: false}); //set the flag to true, if the user of the device opts out of sharing their data
+clevertap.privacy.push({useIP: false}); //set the flag to true, if the user agrees to share their IP data
+ (function () {
+         var wzrk = document.createElement('script');
+         wzrk.type = 'text/javascript';
+         wzrk.async = true;
+         wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/a.js';
+         var s = document.getElementsByTagName('script')[0];
+         s.parentNode.insertBefore(wzrk, s);
+  })();
+</script>
+<script type="text/javascript">
+ 
 
+
+
+console.log("web_inbox.js loaded");
+clevertap.notificationCallback = function(msg){
+    //raise the notification viewed and clicked events in the callback
+    clevertap.raiseNotificationViewed();
+    console.log(JSON.stringify(msg));
+     var $button = jQuery("<button></button>");//element on whose click you want to raise the notification clicked event
+      $button.click(function(){
+         clevertap.raiseNotificationClicked();
+      });//your custom rendering 
+    var ul = document.querySelector("div");
+      var src=msg.kv.imageURL;
+      var title=msg.kv.title;
+      var job_desc=msg.kv.msg;
+      var button_name=msg.kv.buttonText;
+      var deeplink=msg.kv.deeplink;
+      var wrapper= document.createElement('div');
+      var impDivString='<div class="card"><img class="card-img-top" src="'+src+'" alt="Card image cap"><div class="card-body"><h5 class="card-title">'+title+'</h5><p class="card-text">'+msg+'</p><a href="'+deeplink+'" class="btn btn-primary">'+button_name+'</a></div>'
+      var DivString='<div class="col-md-6"><div class="d-flex flex-row border rounded"><div class="p-0 w-25"><img src="'+src+'"class="img-thumbnail border-0" /></div><div class="pl-3 pt-2 pr-2 pb-2 w-75 border-left"><h4 class="text-primary">'+title+' </h4><h5 class="text-info">'+job_desc+'</h5><ul class="m-0 float-left" style="list-style: none; margin:0; padding: 0"><li><i class="fab fa-facebook-square"></i> Facebook</li><li><i class="fab fa-twitter-square"></i> Twitter</li></ul><p class="text-right m-0"><a href="#" class="btn btn-primary"><i class="far fa-user"></i> '+button_name+' </a></p></div></div></div>';
+       wrapper.innerHTML= impDivString;
+    var div=wrapper.firstChild;
+   ul.appendChild(div);
+   
+    // Parse the JSON stored in allEntriesP
+    var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
+    if(existingEntries == null) existingEntries = [];
+    var entryTitle = "1";
+    
+    var entry = {
+        "ID": entryTitle,
+        "UI": impDivString
+    };
+    localStorage.setItem("entry", JSON.stringify(entry));
+    // Save allEntries back to local storage
+    existingEntries.push(entry);
+    localStorage.setItem("allEntries", JSON.stringify(existingEntries));
+    //document.getElementById("go").addEventListener("click", function() {
+    //addEntry();
+    // List of all entries
+   console.log(localStorage.getItem("allEntries"));
+    // Last entry inserted
+  //  console.log(localStorage.getItem("entry"));
+//}, false);
+var items = JSON.parse(localStorage.getItem("allEntries"));
+var uiparse = JSON.parse(localStorage.getItem("entry"));
+    $button.click(function(){
+       clevertap.raiseNotificationClicked();
+    });
+};
+
+    window.onload = function() {
+           var ul = document.querySelector("div");
+   
+      var items = JSON.parse(localStorage.getItem("allEntries"));
+ var uiparse = JSON.parse(localStorage.getItem("entry"));
+var wrapper= document.createElement('div');
+
+ for (var i = 0; i < items.length; i++) {
+  
+      
+  wrapper.innerHTML= uiparse.UI;
+    var div=wrapper.firstChild;
+   ul.appendChild(div);
+  }
+};
+
+
+</script>
         <!-- Bootstrap core JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
@@ -277,24 +363,5 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-        <!-- Firebase -->
-        <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
-
-        <!-- Add Firebase products that you want to use -->
-        <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-firestore.js"></script>
-        <script type="text/javascript">
-            var firebaseConfig = {
-            apiKey: "AIzaSyBdymW-0ZfFImhnnAOE1cgszHBK1iMlFLE",
-            authDomain: "ct-hackathon-web-app-inbox.firebaseapp.com",
-            databaseURL: "https://ct-hackathon-web-app-inbox.firebaseio.com",
-            projectId: "ct-hackathon-web-app-inbox",
-            storageBucket: "ct-hackathon-web-app-inbox.appspot.com",
-            messagingSenderId: "482470199248",
-            appId: "1:482470199248:web:87e929ceb92726fdd103d5"
-          };
-          // Initialize Firebase
-          firebase.initializeApp(firebaseConfig);
-        </script>
     </body>
 </html>

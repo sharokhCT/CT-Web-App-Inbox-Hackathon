@@ -15,17 +15,6 @@ clevertap.privacy.push({useIP: true}); //set the flag to true, if the user agree
      s.parentNode.insertBefore(wzrk, s);
 })();
 
-clevertap.notificationCallback = function(msg) {
-    //raise the notification viewed and clicked events in the callback
-    clevertap.raiseNotificationViewed();
-    //console.log(JSON.stringify(msg)); //your custom rendering implementation here
-    console.log(msg["kv"]);
-    var $button = jQuery("<button></button>"); //element on whose click you want to raise the notification clicked event
-    $button.click(function(){
-        clevertap.raiseNotificationClicked();
-    });
-};
-
 // App Inbox
 function openNav() {
     document.getElementById("mySidenav").style.width = "500px";
@@ -50,7 +39,7 @@ clevertap.notificationCallback = function(msg){
       var src=msg.kv.imageURL;
       var title=msg.kv.title;
       var message=msg.kv.msg;
-      var button_name="Button";
+      var button_name=msg.kv.buttonText;
       var deeplink=msg.kv.deeplink;
       var wrapper= document.createElement('div');
       var impDivString='<div class="card"><img class="card-img-top" src="'+src+'" alt="Card image cap"><div class="card-body"><h5 class="card-title">'+title+'</h5><p class="card-text">'+message+'</p><a href="'+deeplink+'" class="btn btn-primary">'+button_name+'</a></div>';
@@ -79,11 +68,13 @@ clevertap.notificationCallback = function(msg){
     var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
     if(existingEntries == null) existingEntries = [];
     var entryTitle = msg.kv.category;
-    
-    var entry = {
+    var entry= JSON.parse(localStorage.getItem("entry"));
+    if(entry == null) entry = [];
+    var dao_entry= {
         "ID": entryTitle,
         "UI": impDivString
     };
+    entry.push(dao_entry);
     localStorage.setItem("entry", JSON.stringify(entry));
     // Save allEntries back to local storage
     existingEntries.push(entry);
@@ -111,22 +102,25 @@ var wrapper= document.createElement('div');
 
  for (var i = 0; i < items.length; i++) {
   
-    if (uiparse.ID=='promotion'){
+    if (uiparse[i].ID=='promotion'){
         var promo=document.getElementById("promotions");
         var wrapper= document.createElement('div');
-        wrapper.innerHTML= uiparse.UI;
+        wrapper.innerHTML= uiparse[i].UI;
     var div=wrapper.firstChild;
     promo.appendChild(div);
        }
-       else if (uiparse.ID=='offers'){
+       else if (uiparse[i].ID=='offers'){
         var offers=document.getElementById("offers");
         var wrapper= document.createElement('div');
-        wrapper.innerHTML= uiparse.UI;
+        wrapper.innerHTML= uiparse[i].UI;
         var div=wrapper.firstChild;
         offers.appendChild(div);
-       }      
-  wrapper.innerHTML= uiparse.UI;
-    var div=wrapper.firstChild;
-   ul.appendChild(div);
+       } 
+       
+        wrapper.innerHTML= uiparse[i].UI;
+        var all=document.getElementById("all");
+        var div=wrapper.firstChild;
+       all.appendChild(div);
+  
   }
 };

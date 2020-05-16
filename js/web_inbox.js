@@ -78,7 +78,7 @@ clevertap.notificationCallback = function(msg){
     // Parse the JSON stored in allEntriesP
     var existingEntries = JSON.parse(localStorage.getItem("allEntries"));
     if(existingEntries == null) existingEntries = [];
-    var entryTitle = "1";
+    var entryTitle = msg.kv.category;
     
     var entry = {
         "ID": entryTitle,
@@ -94,16 +94,16 @@ clevertap.notificationCallback = function(msg){
    console.log(localStorage.getItem("allEntries"));
     // Last entry inserted
   //  console.log(localStorage.getItem("entry"));
-//}, false);
-var items = JSON.parse(localStorage.getItem("allEntries"));
-var uiparse = JSON.parse(localStorage.getItem("entry"));
+// //}, false);
+// var items = JSON.parse(localStorage.getItem("allEntries"));
+// var uiparse = JSON.parse(localStorage.getItem("entry"));
     $button.click(function(){
        clevertap.raiseNotificationClicked();
     });
 };
 
     window.onload = function() {
-           var ul = document.querySelector("div");
+           var ul = document.getElementById("all");
    
       var items = JSON.parse(localStorage.getItem("allEntries"));
  var uiparse = JSON.parse(localStorage.getItem("entry"));
@@ -111,7 +111,20 @@ var wrapper= document.createElement('div');
 
  for (var i = 0; i < items.length; i++) {
   
-      
+    if (uiparse.ID=='promotion'){
+        var promo=document.getElementById("promotions");
+        var wrapper= document.createElement('div');
+        wrapper.innerHTML= uiparse.UI;
+    var div=wrapper.firstChild;
+    promo.appendChild(div);
+       }
+       else if (uiparse.ID=='offers'){
+        var offers=document.getElementById("offers");
+        var wrapper= document.createElement('div');
+        wrapper.innerHTML= uiparse.UI;
+        var div=wrapper.firstChild;
+        offers.appendChild(div);
+       }      
   wrapper.innerHTML= uiparse.UI;
     var div=wrapper.firstChild;
    ul.appendChild(div);

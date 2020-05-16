@@ -80,7 +80,8 @@ clevertap.privacy.push({useIP: true}); //set the flag to true, if the user agree
 clevertap.notificationCallback = function(msg) {
     //raise the notification viewed and clicked events in the callback
     clevertap.raiseNotificationViewed();
-    console.log(JSON.stringify(msg)); //your custom rendering implementation here
+    //console.log(JSON.stringify(msg)); //your custom rendering implementation here
+    console.log(msg["kv"]);
     var $button = jQuery("<button></button>"); //element on whose click you want to raise the notification clicked event
     $button.click(function(){
         clevertap.raiseNotificationClicked();
@@ -96,30 +97,4 @@ function openNav() {
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     document.body.style.backgroundColor = "#f6f7f9";
-}
-
-// Firebase
-import "https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js";
-
-// Your web app's Firebase configuration
-var firebaseConfig = {
-  apiKey: "AIzaSyBdymW-0ZfFImhnnAOE1cgszHBK1iMlFLE",
-  authDomain: "ct-hackathon-web-app-inbox.firebaseapp.com",
-  databaseURL: "https://ct-hackathon-web-app-inbox.firebaseio.com",
-  projectId: "ct-hackathon-web-app-inbox",
-  storageBucket: "ct-hackathon-web-app-inbox.appspot.com",
-  messagingSenderId: "482470199248",
-  appId: "1:482470199248:web:87e929ceb92726fdd103d5"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
-var ui = new firebaseui.auth.AuthUI(firebase.auth());
-
-function signIn() {
-  ui.start('#firebaseui-auth-container', {
-    signInOptions: [
-      firebase.auth.EmailAuthProvider.PROVIDER_ID
-    ]
-  });
 }

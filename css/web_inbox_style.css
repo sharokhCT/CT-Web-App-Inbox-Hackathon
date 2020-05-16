@@ -1,0 +1,13 @@
+#myTab{
+    margin: 6px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.nav-link.active{
+    border-radius: 23.25rem !important;
+}
+
+#mySidenav{
+    max-width: 85vw !important;
+}

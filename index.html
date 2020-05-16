@@ -17,120 +17,6 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
-
-        <style>
-            .sidenav {
-                height: 100%;
-                width: 0;
-                position: fixed;
-                z-index: 1;
-                top: 0;
-                right: 0;
-                background-color: #FFF;
-                overflow-x: hidden;
-                transition: 0.5s;
-                padding-top: 60px;
-                margin-top: 65px;
-            }
-
-            .sidenav a {
-                text-decoration: none;
-                font-size: 18px;
-                color: #818181;
-                display: block;
-                transition: 0.3s;
-            }
-
-            .sidenav a:hover {
-                color: #f1f1f1;
-            }
-
-            .sidenav .closebtn {
-                position: absolute;
-                top: 0;
-                right: 25px;
-                font-size: 36px;
-                margin-left: 50px;
-            }
-
-            .nav-tabs {
-                border: none !important;
-            }
-
-            .nav-item {
-                width: 33% !important;
-            }
-
-            .nav-link {
-                text-align: center !important;
-            }
-
-            .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
-                color: #FFF !important;
-                background-color: #007bff;
-                border: none !important;
-            }
-
-            .tab-pane {
-                padding: 25px;
-            }
-
-            .appInboxFAB {
-                width: 70px;
-                height: 70px;
-                background-color: #ff893c;
-                border-radius: 50%;
-                box-shadow: 0 6px 10px 0 #666;
-                transition: all 0.1s ease-in-out;
-                font-size: 50px;
-                color: white;
-                text-align: center;
-                line-height: 70px;
-                position: fixed;
-                right: 50px;
-                bottom: 50px;
-            }
-             
-            .appInboxFAB:hover {
-                box-shadow: 0 6px 14px 0 #666;
-                transform: scale(1.05);
-            }
-
-            @media screen and (max-height: 450px) {
-              .sidenav {padding-top: 15px;}
-              .sidenav a {font-size: 18px;}
-            }
-        </style>
-
-        <!-- CleverTap -->
-        <script type="text/javascript">
-             var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
-            // replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
-            clevertap.account.push({"id": "TEST-846-KWR-455Z"});
-            clevertap.privacy.push({optOut: false}); //set the flag to true, if the user of the device opts out of sharing their data
-            clevertap.privacy.push({useIP: true}); //set the flag to true, if the user agrees to share their IP data
-            (function () {
-                 var wzrk = document.createElement('script');
-                 wzrk.type = 'text/javascript';
-                 wzrk.async = true;
-                 wzrk.src = 'https://sharokhct.github.io/CT-Web-Integration/a.js';
-                 var s = document.getElementsByTagName('script')[0];
-                 s.parentNode.insertBefore(wzrk, s);
-            })();
-        </script>
-
-        <!-- App Inbox JS -->
-        <script>
-            function openNav() {
-                document.getElementById("mySidenav").style.width = "500px";
-                document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-            }
-
-            function closeNav() {
-                document.getElementById("mySidenav").style.width = "0";
-                document.body.style.backgroundColor = "#f6f7f9";
-            }
-        </script>
     </head>
     <body id="page-top">
         <!-- App Inbox -->
@@ -345,18 +231,6 @@
 
         <!-- FAB Icon -->
         <div class="appInboxFAB" onclick="openNav()"> + </div>
-
-        <script type="text/javascript">
-            clevertap.notificationCallback = function(msg) {
-                //raise the notification viewed and clicked events in the callback
-                clevertap.raiseNotificationViewed();
-                console.log(JSON.stringify(msg)); //your custom rendering implementation here
-                var $button = jQuery("<button></button>"); //element on whose click you want to raise the notification clicked event
-                $button.click(function(){
-                    clevertap.raiseNotificationClicked();
-                });
-            };
-        </script>
 
         <!-- Bootstrap core JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

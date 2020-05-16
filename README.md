@@ -18,6 +18,7 @@ Using this custom callback, you will be able to parse the payload and control th
 
 You need to explicitly call clevertap.raiseNotificationViewed(); & clevertap.raiseNotificationClicked(); to ensure that notification views and clicks are tracked in your CleverTap Dashboard.
 
+```
 
 clevertap.notificationCallback = function(msg){
       //raise the notification viewed and clicked events in the callback
@@ -28,10 +29,12 @@ clevertap.notificationCallback = function(msg){
          clevertap.raiseNotificationClicked();
       });
 };
+```
 
 
 The msg will be in the format below. msgId contains the campaign id and the date stamp so you can programmatically decide whether to show the notification or not. kv contains the custom key value pairs.
 
+```
 {
 "msgContent":{},
 "msgId":"1589621908_20200516",
@@ -44,21 +47,23 @@ The msg will be in the format below. msgId contains the campaign id and the date
 }
 }
 
+```
+
 
 
 
 
 # 3. Dashboard Usage :
 
-Create an Interstitial Web Pop up campaign on the CleverTap Dashboard.
-Please ensure that you are selecting the option Invoke the Javascript function as shared in the example screenshot below.
+ 1. Create an Interstitial Web Pop up campaign on the CleverTap Dashboard.
+ 2. Please ensure that you are selecting the option Invoke the Javascript function as shared in the example screenshot below.
 
-![altimage](https://github.com/sharokhCT/CT-Web-App-Inbox-Hackathon/blob/master/Screenshot%202020-05-16%20at%204.55.00%20PM.png?raw=true)
+![altimage](https://github.com/AkhilRavindran01/hello-world/blob/master/Screenshot%202020-05-16%20at%207.40.03%20PM.png)
 
 
 
-Define the Custom keys and their value
-Schedule the campaign
+3. Define the Custom keys and their value
+4. Schedule the campaign
 
 
 
@@ -70,22 +75,6 @@ Schedule the campaign
 
 # 4. Custom Keys:
 
-
-Keys
-
-title
-Title of the message
-msg
-Content or Message
-imageURL
-Image Link
-buttonText
-Button text
-deeplink
-Deeplink URL on click of button
-category
-Tab where you want to show the Inbox.
-Tab values: all or promotion or offers
 
 
 

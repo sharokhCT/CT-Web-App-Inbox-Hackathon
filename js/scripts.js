@@ -87,7 +87,7 @@ clevertap.notificationCallback = function(msg) {
     });
 };
 
-// App Imbox
+// App Inbox
 function openNav() {
     document.getElementById("mySidenav").style.width = "500px";
     document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
@@ -96,4 +96,30 @@ function openNav() {
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     document.body.style.backgroundColor = "#f6f7f9";
+}
+
+// Firebase
+import "https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js";
+
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyBdymW-0ZfFImhnnAOE1cgszHBK1iMlFLE",
+  authDomain: "ct-hackathon-web-app-inbox.firebaseapp.com",
+  databaseURL: "https://ct-hackathon-web-app-inbox.firebaseio.com",
+  projectId: "ct-hackathon-web-app-inbox",
+  storageBucket: "ct-hackathon-web-app-inbox.appspot.com",
+  messagingSenderId: "482470199248",
+  appId: "1:482470199248:web:87e929ceb92726fdd103d5"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+function signIn() {
+  ui.start('#firebaseui-auth-container', {
+    signInOptions: [
+      firebase.auth.EmailAuthProvider.PROVIDER_ID
+    ]
+  });
 }

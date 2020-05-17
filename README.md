@@ -43,7 +43,8 @@ The msg will be in the format below. msgId contains the campaign id and the date
 "msg":"I'm the message",
 "imageURL":"https://wallpapercave.com/wp/ppQthYS.jpg",
 "buttonText":"Btn Click",
-"deeplink":"https://youtube.com"
+"deeplink":"https://youtube.com",
+"category":"offers"
 }
 }
 
